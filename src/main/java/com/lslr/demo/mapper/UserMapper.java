@@ -6,8 +6,10 @@ import com.lslr.demo.entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
-// @Mapper
+@Mapper
 public interface UserMapper extends BaseMapper<User> {
+    @Update("update user1 set password=#{newPassword} where username=#{username} and password=#{password}")
+    int updatePassword(UserDTO userDTO);
 
 
   /*  //查询所有

@@ -2,7 +2,9 @@ package com.lslr.demo.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.log.Log;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lslr.demo.common.Constants;
 import com.lslr.demo.common.exception.ServiceException;
@@ -12,6 +14,11 @@ import com.lslr.demo.mapper.UserMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService extends ServiceImpl<UserMapper,User> {
@@ -42,6 +49,17 @@ public class UserService extends ServiceImpl<UserMapper,User> {
             return userDTO;
         }else {
             throw new ServiceException(Constants.CODE_600,"用户名或密码错误");
+        }
+
+    }
+    @Autowired
+     private UserMapper userMapper;
+
+    public void updatePassword(UserDTO userDTO) {
+
+        int update=userMapper.updatePassword(userDTO);
+        if(update<1){
+            throw new ServiceException(Constants.CODE_600,"密码错误");
         }
 
     }

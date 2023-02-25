@@ -15,6 +15,7 @@ import com.lslr.demo.mapper.UserMapper;
 import com.lslr.demo.service.UserService;
 import org.apache.ibatis.annotations.Mapper;
 
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.HttpMediaTypeException;
 import org.springframework.web.bind.annotation.*;
@@ -73,6 +74,27 @@ public class UserController {
     public boolean delete(@PathVariable Integer id){
         return userService.removeById(id);
     }
+
+
+    //根据用户用户名获取数据库这个用户所有属性
+    @GetMapping("/username/{username}")
+    public Result findUsername(@PathVariable String username){
+        QueryWrapper<User> queryWrapper=new QueryWrapper<>();
+        //where username=#{username}
+        queryWrapper.eq("username",username);
+        return Result.success(userService.getOne(queryWrapper));
+    }
+
+    //修改密码
+    @PostMapping("/password")
+            public Result password(@RequestBody UserDTO userDTO){
+        userService.updatePassword(userDTO);
+        return Result.success();
+
+    }
+
+
+
     //分页查询
     //@RequestParam 注解接收 ？pageNum=1&pageSize=10
     //limit第一个参数=（pageNum -1)*pageSize
