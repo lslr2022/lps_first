@@ -11,6 +11,7 @@ import com.lslr.demo.common.exception.ServiceException;
 import com.lslr.demo.controller.dto.UserDTO;
 import com.lslr.demo.entity.User;
 import com.lslr.demo.mapper.UserMapper;
+import com.lslr.demo.utils.TokenUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,9 @@ public class UserService extends ServiceImpl<UserMapper,User> {
         }
         if(one!=null){
             BeanUtil.copyProperties(one,userDTO,true);
+            //设置token
+            String token= TokenUtils.getToken(one.getId().toString(),one.getPassword());
+            userDTO.setToken(token);
             return userDTO;
         }else {
             throw new ServiceException(Constants.CODE_600,"用户名或密码错误");

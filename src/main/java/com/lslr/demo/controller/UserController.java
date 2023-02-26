@@ -13,6 +13,7 @@ import com.lslr.demo.controller.dto.UserDTO;
 import com.lslr.demo.entity.User;
 import com.lslr.demo.mapper.UserMapper;
 import com.lslr.demo.service.UserService;
+import com.lslr.demo.utils.TokenUtils;
 import org.apache.ibatis.annotations.Mapper;
 
 import org.apache.ibatis.annotations.Update;
@@ -49,8 +50,11 @@ public class UserController {
             return Result.error(Constants.CODE_400,"参数错误");
         }
         UserDTO dto= userService.login(userDTO);
+
         return  Result.success(dto);
     }
+
+
 
 
     ////新增或者更新
