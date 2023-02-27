@@ -30,6 +30,16 @@ const routes = [
         path: '/password',
         name:'Password',
         component:()=>import('../views/Password')
+      },
+      {
+        path: '/file',
+        name:'File',
+        component:()=>import('../views/File1')
+      },
+      {
+        path: '/echarts',
+        name:'Echarts',
+        component:()=>import('../views/Echarts')
       }
     ]
 
@@ -56,5 +66,7 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+
 
 export default router

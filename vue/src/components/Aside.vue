@@ -39,6 +39,18 @@
           <span slot="title">竞赛管理</span>
         </template>
       </el-menu-item>
+      <el-menu-item index="/file">
+        <template slot="title">
+          <i class="el-icon-s-order"></i>
+          <span slot="title">文件管理</span>
+        </template>
+      </el-menu-item>
+      <el-menu-item index="/echarts">
+        <template slot="title">
+          <i class="el-icon-s-order"></i>
+          <span slot="title">信息统计</span>
+        </template>
+      </el-menu-item>
 
     </el-submenu>
     <el-submenu index="3">
