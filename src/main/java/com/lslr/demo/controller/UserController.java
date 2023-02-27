@@ -149,13 +149,15 @@ public class UserController {
         // ExcelWriter writer = ExcelUtil.getWriter(filesUploadPath+"用户信息.xlsx");
         //内存操作，写出到浏览器
         ExcelWriter writer=ExcelUtil.getWriter(true);
-        writer.addHeaderAlias("id","账号");
-        writer.addHeaderAlias("username","用户名");
+        writer.addHeaderAlias("id","编号");
+        writer.addHeaderAlias("username","账户户名");
         writer.addHeaderAlias("password","密码");
-        writer.addHeaderAlias("nickname","昵称");
+        writer.addHeaderAlias("name","姓名");
+        writer.addHeaderAlias("nickname","用户类型");
         writer.addHeaderAlias("email","邮箱");
         writer.addHeaderAlias("phone","电话");
         writer.addHeaderAlias("address","地址");
+        writer.addHeaderAlias("createTime","创建时间");
         writer.addHeaderAlias("avatar","头像");
 
         //写出list对象到excel，使用默认样式，强制输出标题

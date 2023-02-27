@@ -6,10 +6,15 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/login',
+    name:'Login',
+    component: () =>import('../views/Login')
+  },
+  {
     path: '/',
     name: 'Mane',
     component: () =>import('../views/Mane.vue'),
-    redirect:"/home",
+    redirect:"/login",
     children: [
       {
         path: 'home',
@@ -45,6 +50,8 @@ const routes = [
 
   },
 
+
+
   {
     path: '/about',
     name: 'about',
@@ -53,11 +60,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
-  {
-    path: '/login',
-    name:'Login',
-    component: () =>import('../views/Login')
-  },
+
 
 ]
 

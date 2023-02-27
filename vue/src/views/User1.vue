@@ -11,10 +11,10 @@
    </div>
 
    <div style="margin: 10px  0">
-     <el-input style="width: 200px" placeholder="请输入名称"   suffix-icon="el-icon-search" class="ml-5"
+     <el-input style="width: 200px" placeholder="请输入账户名"   suffix-icon="el-icon-search" class="ml-5"
                v-model="username"
      ></el-input>
-     <el-input style="width: 200px" placeholder="请输入昵称"   suffix-icon="el-icon-message" class="ml-5"
+     <el-input style="width: 200px" placeholder="请输入用户类型"   suffix-icon="el-icon-message" class="ml-5"
                v-model="nickname"></el-input>
      <el-input style="width: 200px" placeholder="请输入地址"   suffix-icon="el-icon-position" class="ml-5"
                v-model="address"></el-input>
@@ -39,11 +39,12 @@
    <el-table :data="tableData" border stripe>
      <el-table-column prop="id" label="ID" width="80"></el-table-column>
      <el-table-column prop="username" label="用户名" width="140"></el-table-column>
-     <el-table-column prop="password" label="密码" width="120"></el-table-column>
-     <el-table-column prop="nickname" label="昵称"></el-table-column>
+<!--     <el-table-column prop="password" label="密码" width="120"></el-table-column>-->
+     <el-table-column prop="name" label="姓名" width="120"></el-table-column>
+     <el-table-column prop="nickname" label="用户类型"></el-table-column>
      <el-table-column prop="email" label="邮箱"></el-table-column>
      <el-table-column prop="phone" label="电话"></el-table-column>
-     <el-table-column prop="address" label="地址"></el-table-column>
+     <el-table-column prop="address" label="地址" ></el-table-column>
 
      <el-table-column>
        <template slot-scope="scope">
@@ -79,7 +80,11 @@
        <el-form-item label="用户名" >
          <el-input v-model="form.username" autocomplete="off"></el-input>
        </el-form-item>
-       <el-form-item label="昵称" >
+       <el-form-item label="姓名" >
+         <el-input v-model="form.name" autocomplete="off"></el-input>
+       </el-form-item>
+
+       <el-form-item label="用户类型" >
          <el-input v-model="form.nickname" autocomplete="off"></el-input>
        </el-form-item>
        <el-form-item label="邮箱" >

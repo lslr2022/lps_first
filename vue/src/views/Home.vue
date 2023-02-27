@@ -13,9 +13,9 @@
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
       <el-form-item label="用户名" >
-        <el-input v-model="form.username"  autocomplete="off"  style="margin-top:10px"></el-input>
+        <el-input v-model="form.username"  autocomplete="off"  style="margin-top:5px"></el-input>
       </el-form-item>
-      <el-form-item label="昵称" >
+      <el-form-item label="用户类型" >
         <el-input v-model="form.nickname" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="邮箱" >
