@@ -42,7 +42,6 @@ export default {
     }
   },
   //练习
-
   components:{
     Aside,
     Header

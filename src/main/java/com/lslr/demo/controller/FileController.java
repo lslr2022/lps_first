@@ -125,11 +125,12 @@ public class FileController {
         fileMapper.updateById(files);
         return Result.success();
     }
-    ////新增或者更新
+    //新增或者更新
     @PostMapping("/update")
     public Result save(@RequestBody Files files){  //@RequestBody数据映射成对象
         return Result.success(fileMapper.updateById(files));
     }
+
 
 
 

@@ -13,14 +13,14 @@
 
     </div>
 
-     <el-menu-item index="/home">
+     <el-menu-item index="/home" >
        <template slot="title">
          <i class="el-icon-menu"></i>
          <span slot="title">个人中心</span>
        </template>
        </el-menu-item>
 
-    <el-submenu index="2">
+    <el-submenu index="2" :disabled="isDisabled">
       <template slot="title">
         <i class="el-icon-menu"></i>
         <span slot="title">系统管理</span>
@@ -32,6 +32,12 @@
             <span slot="title">用户管理</span>
           </template>
         </el-menu-item>
+      <el-menu-item index="/TeaProject">
+        <template slot="title">
+          <i class="el-icon-s-order"></i>
+          <span slot="title">竞赛发布</span>
+        </template>
+      </el-menu-item>
 
       <el-menu-item index="/project">
         <template slot="title">
@@ -39,6 +45,7 @@
           <span slot="title">竞赛管理</span>
         </template>
       </el-menu-item>
+
       <el-menu-item index="/file">
         <template slot="title">
           <i class="el-icon-s-order"></i>
@@ -56,11 +63,17 @@
     <el-submenu index="3">
       <template slot="title">
         <i class="el-icon-setting"></i>
-        <span solt="title">导航三</span>
+        <span solt="title">学生中心</span>
       </template>
-      <el-submenu index="3-4">
-        <template slot="title">选项4</template>
-      </el-submenu>
+      <el-menu-item index="/subProject">
+        <template slot="title">竞赛查看</template>
+      </el-menu-item>
+      <el-menu-item index="3-4">
+        <template slot="title">我的项目管理</template>
+      </el-menu-item>
+      <el-menu-item index="3-4">
+        <template slot="title">信息统计</template>
+      </el-menu-item>
     </el-submenu>
   </el-menu>
 </template>
@@ -70,8 +83,22 @@ export default {
   name: "Aside",
   props:{
     isCollapse:Boolean,
-    logoTextShow:Boolean
+    logoTextShow:Boolean,
+  },
+  computed:{
+    isDisabled(){
+      let nickname=localStorage.getItem("user")?JSON.parse(localStorage.getItem("user")).nickname:""
+      if(nickname==="学生"){
+        return true
+      }else if(nickname==="管理员"){
+        return false
+      }else{
+        return true
+      }
+    }
   }
+
+
 
 }
 </script>

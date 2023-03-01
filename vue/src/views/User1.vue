@@ -2,7 +2,7 @@
  <div>
    <div style="margin-bottom: 30px">
      <el-breadcrumb spearator="/">
-       <el-breadcrumb-item :to="{path:'/'}">主页</el-breadcrumb-item>
+       <el-breadcrumb-item :to="{path:'/Home'}">主页</el-breadcrumb-item>
        <el-breadcrumb-item>用户管理</el-breadcrumb-item>
 
 
@@ -188,7 +188,6 @@ export default {
     handleAdd(){
       this.dialogFormVisible=true
       this.form={}
-
     },
 
     handleSizeChange(pageSize){

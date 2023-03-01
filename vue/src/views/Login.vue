@@ -45,12 +45,12 @@ export default {
           this.request.post("/user/login",this.user).then(res =>{
             if(res.code==='200'&&res.data.nickname==="管理员"){
               localStorage.setItem("user",JSON.stringify(res.data))   //存储用户信息到浏览器
-              this.$router.push("/user")
+              this.$router.push("/echarts")
               this.$message.success("登录成功")
             }
             else if(res.code==='200'&&res.data.nickname==="学生"){
               localStorage.setItem("user",JSON.stringify(res.data))   //存储用户信息到浏览器
-              this.$router.push("/user")
+              this.$router.push("/echarts")
               this.$message.success("登录成功")
             } else{
               this.$message.error(res.msg)

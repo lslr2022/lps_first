@@ -27,6 +27,7 @@ public class ProjectController {
         return projectService.saveOrUpdate(project);
     }
     //删除
+
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable Integer id){
         return projectService.removeById(id);

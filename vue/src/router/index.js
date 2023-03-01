@@ -45,10 +45,21 @@ const routes = [
         path: '/echarts',
         name:'Echarts',
         component:()=>import('../views/Echarts')
+      },
+      {
+        path: '/subProject',
+        name:'SubProject',
+        component:()=>import('../views/StuProject')
+      },
+      {
+        path: '/TeaProject',
+        name:'TeaProject',
+        component:()=>import('../views/TeaProject')
       }
     ]
 
   },
+
 
 
 
@@ -60,7 +71,6 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
-
 
 ]
 

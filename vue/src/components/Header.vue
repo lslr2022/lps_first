@@ -12,7 +12,7 @@
       </div>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item>
-        <router-link to="/" style="text-decoration: none">个人信息</router-link>
+        <router-link to="/home" style="text-decoration: none">个人信息</router-link>
         </el-dropdown-item>
         <el-dropdown-item>
           <router-link to="/password" style="text-decoration: none">修改密码</router-link>
