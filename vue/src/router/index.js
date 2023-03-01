@@ -55,6 +55,11 @@ const routes = [
         path: '/TeaProject',
         name:'TeaProject',
         component:()=>import('../views/TeaProject')
+      },
+      {
+        path: '/MyProject',
+        name:'MyProject',
+        component:()=>import('../views/MyProject')
       }
     ]
 

@@ -66,9 +66,9 @@
         <span solt="title">学生中心</span>
       </template>
       <el-menu-item index="/subProject">
-        <template slot="title">竞赛查看</template>
+        <template slot="title">竞赛申请</template>
       </el-menu-item>
-      <el-menu-item index="3-4">
+      <el-menu-item index="/MyProject">
         <template slot="title">我的项目管理</template>
       </el-menu-item>
       <el-menu-item index="3-4">

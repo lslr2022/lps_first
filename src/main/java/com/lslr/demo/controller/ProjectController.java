@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lslr.demo.entity.Project;
 import com.lslr.demo.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,6 +56,36 @@ public class ProjectController {
 
 
     }
+    //分页查询  Mybatis-plus的方式查询
+    @GetMapping("/page12")
+    @Transactional
+    public IPage<Project> findPage2(@RequestParam Integer pageNum,
+                                   @RequestParam Integer pageSize,
+                                   @RequestParam(defaultValue = "") String projectname,
+                                   @RequestParam (defaultValue = "")String projecttype,
+                                   @RequestParam (defaultValue = "")String projectcondition,
+                                   @RequestParam (defaultValue = "")String name){
+        IPage<Project>  page=new Page<>(pageNum,pageSize);
+        QueryWrapper<Project> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("projectmember",name);
+
+
+        if(!"".equals(projectname)){
+            queryWrapper.like("projectname",projectname);
+        }
+        if(!"".equals(projecttype)){
+            queryWrapper.like("projecttype",projecttype);
+        }
+        if(!"".equals(projectcondition)){
+            queryWrapper.like("projectcondition",projectcondition);
+        }
+
+
+        return projectService.page(page,queryWrapper);
+
+
+    }
+
 
 
 
