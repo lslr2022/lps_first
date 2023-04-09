@@ -2,7 +2,7 @@
  <div>
    <div style="margin-bottom: 30px">
      <el-breadcrumb spearator="/">
-       <el-breadcrumb-item :to="{path:'/Home'}">主页</el-breadcrumb-item>
+       <el-breadcrumb-item :to="{path:'/Home'}">个人中心</el-breadcrumb-item>
        <el-breadcrumb-item>用户管理</el-breadcrumb-item>
 
 

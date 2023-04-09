@@ -36,6 +36,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         //获得token中的user id
         String userId;
         try{
+            //解析
             userId= JWT.decode(token).getAudience().get(0);
         }catch (JWTDecodeException j){
             throw new ServiceException(Constants.CODE_401,"token验证失败，请重新登录");
@@ -47,7 +48,7 @@ public class JwtInterceptor implements HandlerInterceptor {
             throw new ServiceException(Constants.CODE_401,"用户不存在，需要重新登录");
         }
 
-        //验证token
+        //加签验证token
         JWTVerifier jwtVerifier=JWT.require(Algorithm.HMAC256(user.getPassword())).build();
         try{
             jwtVerifier.verify(token);

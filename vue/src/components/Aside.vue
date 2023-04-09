@@ -19,6 +19,12 @@
          <span slot="title">个人中心</span>
        </template>
        </el-menu-item>
+    <el-menu-item index="/Article" >
+      <template slot="title">
+        <i class="el-icon-menu"></i>
+        <span slot="title">公告栏</span>
+      </template>
+    </el-menu-item>
 
     <el-submenu index="2" :disabled="isDisabled">
       <template slot="title">
@@ -74,7 +80,11 @@
       <el-menu-item index="3-4">
         <template slot="title">信息统计</template>
       </el-menu-item>
+      <el-menu-item index="/StuArticle">
+        <template slot="title">公告</template>
+      </el-menu-item>
     </el-submenu>
+
   </el-menu>
 </template>
 

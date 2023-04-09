@@ -60,6 +60,22 @@ const routes = [
         path: '/MyProject',
         name:'MyProject',
         component:()=>import('../views/MyProject')
+      },
+      {
+        path: '/Article',
+        name:'Article',
+        component:()=>import('../views/Article')
+      },
+      {
+        path: '/StuArticle',
+        name:'StuArticle',
+        component:()=>import('../views/StuArticle')
+      },
+      {
+        path: '/StuArticleDetail',
+        name:'StuArticleDetail',
+        component:()=>import('../views/StuArticleDetail')
+
       }
     ]
 

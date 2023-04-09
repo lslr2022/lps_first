@@ -43,8 +43,9 @@ public class FileController {
       String type=FileUtil.extName(originalFilename);
       //大小
         long size= file.getSize();
-        //定义一个文件标识位
+        //定义一个文件标识位，调用HuTool工具类生成唯一id
         String uuid= IdUtil.fastSimpleUUID();
+        //数据库url
         String fileUUID = uuid+StrUtil.DOT+type;
 
         File uploadFile =new File(fileUploadPath+fileUUID);
@@ -67,7 +68,6 @@ public class FileController {
             url=dbFiles.getUrl();
             //删除刚上传的重复的文件
             uploadFile.delete();
-
         }else {
             url="http://localhost:9090/file/"+fileUUID;
         }

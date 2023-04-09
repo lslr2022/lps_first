@@ -57,7 +57,7 @@ public class UserController {
 
 
 
-    ////新增或者更新
+    //新增或者更新
     @PostMapping
     public boolean save(@RequestBody User user){  //@RequestBody数据映射成对象
         return userService.saveUser(user);
@@ -134,7 +134,6 @@ public class UserController {
         }
 
        return userService.page(page,queryWrapper);
-
 
     }
 

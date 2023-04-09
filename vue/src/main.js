@@ -6,6 +6,11 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/global.css'
 import request from "@/utils/request.";
+//全局注册
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+//use
+Vue.use(mavonEditor)
 
 Vue.config.productionTip = false
 //学习内容

@@ -31,7 +31,7 @@ export default {
 
     var option = {
       title: {
-        text:'各季节用户注册数量',
+        text:'各季节用户使用量',
         subtext: '趋势',
         left:'center'
       },
@@ -66,8 +66,8 @@ export default {
 
      var pieOption = {
       title: {
-        text: 'Referer of a Website',
-        subtext: 'Fake Data',
+        text: '作品数量统计',
+        subtext: '占比图',
         left: 'center'
       },
       tooltip: {
@@ -131,10 +131,10 @@ export default {
       //数据准备最后set
       myChart.setOption(option);
       pieOption.series[0].data=[
-        {name:  "春"  , value:res.data[0]   },
-        {name:  "夏"  , value:res.data[1]   },
-        {name:  "秋"  , value:res.data[2]   },
-        {name:  "冬"  , value:res.data[3]   },
+        {name:  "Spring"  , value:res.data[0]   },
+        {name:  "Summer"  , value:res.data[1]   },
+        {name:  "Autumn"  , value:res.data[2]   },
+        {name:  "Winter"  , value:res.data[3]   },
       ]
       pieChart.setOption(pieOption)
     })

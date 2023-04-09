@@ -69,6 +69,7 @@ export default {
         if(res){
           this.$message.success("保存成功")
           this.dialogFormVisible=false
+          //触发mane里面方法
           this.$emit('refreshUser')
           //更新浏览器存储的用户信息
           /*this.getUser().then(res=>{

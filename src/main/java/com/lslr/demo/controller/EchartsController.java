@@ -40,6 +40,7 @@ public class EchartsController {
         int q3=0;
         int q4=0;
         for(User user:list){
+            //获取时间
             Date createTime=user.getCreateTime();
             //QUARTER() 函数返回给定日期值（从 1 到 4 的数字）的一年中的季度。
             //1-3 月返回 1
