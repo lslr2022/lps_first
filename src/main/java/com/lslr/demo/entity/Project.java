@@ -17,6 +17,10 @@ public class Project {
     private String projectmember;
     private String stime;
     private String ltime;
+    private Boolean isReview;
+    private String url;
+    private String score;
+    private String fileName;
 
 
 }

@@ -3,7 +3,8 @@
     <div style="margin-bottom: 30px">
       <el-breadcrumb spearator="/">
         <el-breadcrumb-item :to="{path:'/Home'}">主页</el-breadcrumb-item>
-        <el-breadcrumb-item>项目管理</el-breadcrumb-item>
+        <el-breadcrumb-item >竞赛项目申请</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path:'/PassProject'}" style="cursor:pointer ">已通过竞赛项目</el-breadcrumb-item>
 
 
       </el-breadcrumb>
@@ -40,14 +41,19 @@
       <el-table-column prop="id" label="ID" width="80"></el-table-column>
       <el-table-column prop="projectname"  label="竞赛名称" width="140"></el-table-column>
       <el-table-column prop="projecttype" label="竞赛类型" width="120"></el-table-column>
-      <el-table-column prop="projectcondition" label="赛况"></el-table-column>
-      <el-table-column prop="projectmember" label="竞赛成员"></el-table-column>
+      <el-table-column prop="projectcondition" label="赛况" width="80"></el-table-column>
+      <el-table-column prop="projectmember" label="竞赛成员" width="80"></el-table-column>
       <el-table-column prop="stime" label="开始时间"></el-table-column>
       <el-table-column prop="ltime" label="结束时间"></el-table-column>
-
+      <el-table-column label="审核" width="80">
+        <template slot-scope="scope">
+        <el-button type="primary" @click="handleReview(scope.row.id)">通过</el-button>
+        </template>
+      </el-table-column>
       <el-table-column>
         <template slot-scope="scope">
           <el-button type="success" @click="handleEdit(scope.row)">编辑<i class="el-icon-edit"></i></el-button>
+
           <el-popconfirm
               class="ml-5"
               confirm-button-text='好的'
@@ -59,6 +65,7 @@
           >
             <el-button type="danger" slot="reference">删除<i class="el-icon-remove-outline"></i></el-button>
           </el-popconfirm>
+
         </template>
       </el-table-column>
     </el-table>
@@ -176,6 +183,17 @@ export default {
           this.$message.success("删除失败")
         }
       })
+    },
+    handleReview(id){
+      this.request.post("/project/"+id).then(res=>{
+        if(res.code==='200'){
+          this.$message.success("审核通过")
+          this.load()
+        }else {
+          this.$message.success("审核失败")
+        }
+      })
+
     },
 
     reset(){

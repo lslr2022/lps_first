@@ -6,6 +6,7 @@ import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lslr.demo.common.Constants;
 import com.lslr.demo.common.Result;
 import com.lslr.demo.entity.Files;
 import com.lslr.demo.entity.User;
@@ -13,6 +14,8 @@ import com.lslr.demo.mapper.FileMapper;
 import com.lslr.demo.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,6 +37,8 @@ public class FileController {
     private String fileUploadPath;
     @Resource
     private FileMapper fileMapper;
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     @PostMapping("/upload")
     public String upload(@RequestParam MultipartFile file) throws IOException {
@@ -79,6 +84,8 @@ public class FileController {
         saveFile.setUrl(url);
         saveFile.setMd5(md5);
         fileMapper.insert(saveFile);
+
+        flushRedis(Constants.FILES_KEY);
         return url;
 
 
@@ -103,7 +110,6 @@ public class FileController {
         //查询文件的md5是否存在
         QueryWrapper<Files> queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("md5",md5);
-
          List<Files> filesList= fileMapper.selectList(queryWrapper);
          return filesList.size()  ==  0  ?null:filesList.get(0);
     }
@@ -123,12 +129,33 @@ public class FileController {
         Files files=fileMapper.selectById(id);
         files.setIsDelete(true);
         fileMapper.updateById(files);
+        flushRedis(Constants.FILES_KEY);
         return Result.success();
     }
+    @DeleteMapping("/true/{id}")
+    public Result delete1(@PathVariable Integer id){
+        fileService.removeById(id);
+        return Result.success();
+    }
+    @DeleteMapping("/recover/{id}")
+    public Result recover(@PathVariable Integer id){
+        Files files=fileMapper.selectById(id);
+        files.setIsDelete(false);
+        fileMapper.updateById(files);
+        return Result.success();
+    }
+
+
     //新增或者更新
     @PostMapping("/update")
     public Result save(@RequestBody Files files){  //@RequestBody数据映射成对象
+        flushRedis(Constants.FILES_KEY);
         return Result.success(fileMapper.updateById(files));
+    }
+
+    @GetMapping("/front/all")
+    public Result frontAll(){
+        return Result.success(fileMapper.selectList(null));
     }
 
 
@@ -145,12 +172,56 @@ public class FileController {
 
         //查询未删除的记录
         queryWrapper.eq("is_delete",false);
+        queryWrapper.notLike("name",".jpg");
+        queryWrapper.notLike("name",".png");
+       // queryWrapper.like("name",".jpg").or().like("name",".png");
         if(!"".equals(name)){
             queryWrapper.like("name",name);
         }
 
        return fileService.page(page,queryWrapper);
 
+
+    }
+    @GetMapping("/page11")
+    public IPage<Files> findPage1(@RequestParam Integer pageNum,
+                                 @RequestParam Integer pageSize,
+                                 @RequestParam(defaultValue = "") String name){
+        IPage<Files>  page=new Page<>(pageNum,pageSize);
+        QueryWrapper<Files> queryWrapper=new QueryWrapper<>();
+
+        //查询未删除的记录
+        queryWrapper.eq("is_delete",false);
+         queryWrapper.like("name",".jpg").or().like("name",".png");
+        if(!"".equals(name)){
+            queryWrapper.like("name",name);
+        }
+
+        return fileService.page(page,queryWrapper);
+
+
+    }
+    @GetMapping("/page111")
+    public IPage<Files> findPage11(@RequestParam Integer pageNum,
+                                  @RequestParam Integer pageSize,
+                                  @RequestParam(defaultValue = "") String name){
+        IPage<Files>  page=new Page<>(pageNum,pageSize);
+        QueryWrapper<Files> queryWrapper=new QueryWrapper<>();
+
+        //查询未删除的记录
+        queryWrapper.eq("is_delete",true);
+
+        if(!"".equals(name)){
+            queryWrapper.like("name",name);
+        }
+
+        return fileService.page(page,queryWrapper);
+
+
+    }
+    //删除缓存
+    private void flushRedis(String key){
+        stringRedisTemplate.delete(key);
 
     }
 

@@ -90,29 +90,12 @@ export default {
         }
       }).then(res =>{
         console.log(res)
-
         this.tableData=res.records
         this.total=res.total
       })
-      /*fetch( "http://localhost:9090/user/page1?pageNum="+this.pageNum+"&pageSize="+this.pageSize+"&username="+this.username+"&nickname="+this.nickname)
-          .then(res => res.json()).then(res =>{
-        console.log(res)
-        this.tableData=res.data
-        this.total=res.total
-      })*/
 
-    },/*
-    /!*删除用户的方法 *!/第一种删除判断
-    handleDel(id){
-      this.request.delete("/file/"+id).then(res =>{
-        if(res){
-          this.$message.success("删除成功")
-          this.load()
-        }else{
-          this.$message.success("删除失败")
-        }
-      })
-    },*/
+    },
+
     handleDel(id){
       this.request.delete("/file/"+id).then(res=>{
         if(res.code==='200'){

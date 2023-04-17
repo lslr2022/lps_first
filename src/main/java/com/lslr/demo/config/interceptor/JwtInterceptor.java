@@ -28,6 +28,12 @@ public class JwtInterceptor implements HandlerInterceptor {
        //如果不是映射到方法则直接通过
         if(!(handler instanceof HandlerMethod)){
             return true;
+        }else{
+            HandlerMethod h=(HandlerMethod) handler;
+            AuthAccess authAccess=h.getMethodAnnotation(AuthAccess.class);
+            if(authAccess!=null){
+                return true;
+            }
         }
         //执行认证
         if(StrUtil.isBlank(token)){

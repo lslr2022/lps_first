@@ -33,8 +33,6 @@ public class TokenUtils {
                 .withExpiresAt(DateUtil.offsetHour(new Date(),1))//一个小时后token 过期
                 .sign(Algorithm.HMAC256(sign));    //用password作为密钥
     }
-
-
     //获取当前用户的登录信息
     //返回user对象
     public static User getCurrentUser() {

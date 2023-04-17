@@ -9,10 +9,10 @@
       <el-button type="warning" @click="reset">清空</el-button>
 
     </div>
-    <div style="margin: 10px 0"  >
+<!--    <div style="margin: 10px 0"  >
       <el-button type="primary" @click="handleAdd">发布<i class="el-icon-circle-plus-outline"></i></el-button>
-      <!--           <el-button type="danger">删除<i class="el-icon-remove-outline"></i></el-button>-->
-    </div>
+      &lt;!&ndash;           <el-button type="danger">删除<i class="el-icon-remove-outline"></i></el-button>&ndash;&gt;
+    </div>-->
 
     <div style="margin: 10px 0">
       <div style="padding: 20px 0; border-bottom: 1px dashed #ccc;  " v-for="item in tableData" :key="item.id">

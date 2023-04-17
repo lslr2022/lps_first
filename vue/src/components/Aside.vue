@@ -15,7 +15,7 @@
 
      <el-menu-item index="/home" >
        <template slot="title">
-         <i class="el-icon-menu"></i>
+         <i class="el-icon-user-solid"></i>
          <span slot="title">个人中心</span>
        </template>
        </el-menu-item>
@@ -51,16 +51,40 @@
           <span slot="title">竞赛管理</span>
         </template>
       </el-menu-item>
-
-      <el-menu-item index="/file">
+      <el-menu-item index="/ProjectScore">
         <template slot="title">
           <i class="el-icon-s-order"></i>
-          <span slot="title">文件管理</span>
+          <span slot="title">竞赛评分</span>
         </template>
       </el-menu-item>
+
+      <el-submenu index="/file">
+        <template slot="title">
+          <i class="el-icon-files"></i>
+          <span slot="title">文件管理</span>
+        </template>
+        <el-menu-item  index="/file2">
+          <template slot="title">
+            <i class="el-icon-picture-outline"></i>
+            <span slot="title">图片文件</span>
+          </template>
+        </el-menu-item>
+        <el-menu-item  index="/file">
+          <template slot="title">
+            <i class="el-icon-files"></i>
+            <span slot="title">竞赛文件</span>
+          </template>
+        </el-menu-item>
+        <el-menu-item  index="/file3">
+          <template slot="title">
+            <i class="el-icon-delete"></i>
+            <span slot="title">回收站</span>
+          </template>
+        </el-menu-item>
+      </el-submenu>
       <el-menu-item index="/echarts">
         <template slot="title">
-          <i class="el-icon-s-order"></i>
+          <i class="el-icon-data-line"></i>
           <span slot="title">信息统计</span>
         </template>
       </el-menu-item>

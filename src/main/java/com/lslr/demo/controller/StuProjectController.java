@@ -32,10 +32,6 @@ public class StuProjectController {
         List<StuProject> list=stuProjectService.list(queryWrapper);
         return Result.success(list);
     }*/
-
-
-
-
     //新增或者更新
     @PostMapping("/save")
     public boolean save(@RequestBody StuProject stuProject){  //@RequestBody数据映射成对象

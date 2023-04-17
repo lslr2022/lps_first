@@ -3,7 +3,8 @@
     <div style="margin-bottom: 30px">
       <el-breadcrumb spearator="/">
         <el-breadcrumb-item :to="{path:'/Home'}">主页</el-breadcrumb-item>
-        <el-breadcrumb-item>项目管理</el-breadcrumb-item>
+        <el-breadcrumb-item >我的项目管理</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{path:'/MyPassProject'}">已通过竞赛</el-breadcrumb-item>
 
 
       </el-breadcrumb>
@@ -22,9 +23,9 @@
       <el-button type="warning" @click="reset">清空</el-button>
 
     </div>
-    <div style="margin: 10px 0"  >
+<!--    <div style="margin: 10px 0"  >
       <el-button type="primary" @click="handleAdd">新增<i class="el-icon-circle-plus-outline"></i></el-button>
-      <!--           <el-button type="danger">删除<i class="el-icon-remove-outline"></i></el-button>-->
+      &lt;!&ndash;           <el-button type="danger">删除<i class="el-icon-remove-outline"></i></el-button>&ndash;&gt;
       <el-upload
           action="http://localhost:9090/user/import"
           :on-success="handleImportSuccess"
@@ -34,7 +35,7 @@
       </el-upload>
       <el-button type="danger" @click="exp" class="ml-5">导出<i class="el-icon-s-promotion"></i></el-button>
 
-    </div>
+    </div>-->
 
     <el-table :data="tableData" border stripe :cell-style="cellStyle">
       <el-table-column prop="id" label="ID" width="80"></el-table-column>

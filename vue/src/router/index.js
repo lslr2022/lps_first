@@ -11,6 +11,18 @@ const routes = [
     component: () =>import('../views/Login')
   },
   {
+    path:'/front',
+    name:'Front',
+    component:()=>import('../views/front/Front'),
+    children: [
+      {
+        path: 'home',
+        name: 'FrontHome',
+        component:()=>import('../views/front/Home')
+      }
+    ]
+  },
+  {
     path: '/',
     name: 'Mane',
     component: () =>import('../views/Mane.vue'),
@@ -32,6 +44,11 @@ const routes = [
         component:()=>import('../views/Project.vue'),
       },
       {
+        path: 'ProjectScore',
+        name:'ProjectScore',
+        component:()=>import('../views/ProjectScore')
+      },
+      {
         path: '/password',
         name:'Password',
         component:()=>import('../views/Password')
@@ -41,6 +58,18 @@ const routes = [
         name:'File',
         component:()=>import('../views/File1')
       },
+      {
+        path: '/file2',
+        name:'File',
+        component:()=>import('../views/File2')
+      },
+      {
+        path: '/file3',
+        name:'File',
+        component:()=>import('../views/RecycleBin')
+      },
+
+
       {
         path: '/echarts',
         name:'Echarts',
@@ -62,6 +91,11 @@ const routes = [
         component:()=>import('../views/MyProject')
       },
       {
+        path: '/MyPassProject',
+        name:'MyPassProject',
+        component:()=>import('../views/MyPassProject')
+      },
+      {
         path: '/Article',
         name:'Article',
         component:()=>import('../views/Article')
@@ -76,6 +110,11 @@ const routes = [
         name:'StuArticleDetail',
         component:()=>import('../views/StuArticleDetail')
 
+      },
+      {
+        path:'/PassProject',
+        name:'PassProject',
+        component:()=>import('../views/PassProject')
       }
     ]
 

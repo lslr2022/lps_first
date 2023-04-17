@@ -12,7 +12,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
        registry.addInterceptor(jwtInterceptor())
                .addPathPatterns("/**")
                .excludePathPatterns("/user/login","/**/export","/**/import","/file/**",
-                       "/user/username/**","/stuProject/**","/user/**","/project/**","/article/**","/comment/**");   //拦截所有的请求，token是否合法来决定是否登录
+                       "/user/username/**","/stuProject/**","/user/**","/project/**","/article/**","/comment/**","/project","/project/upload");   //拦截所有的请求，token是否合法来决定是否登录
     }
     @Bean
     public JwtInterceptor jwtInterceptor(){

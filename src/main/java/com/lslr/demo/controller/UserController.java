@@ -66,6 +66,7 @@ public class UserController {
     @GetMapping("/")
     public List<User> findAll(){
 
+
         return userService.list();
     }
     /*@GetMapping("/user")
